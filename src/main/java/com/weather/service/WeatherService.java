@@ -97,7 +97,7 @@ public class WeatherService {
 			throws MalformedURLException, IOException, ProtocolException, JsonParseException, JsonMappingException {
 
 		String baseURL = "https://api.weatherbit.io/v2.0/forecast/hourly";
-		String finalURL = baseURL + "?" + "postal_code=" + zipCode + "&country=" + countryCode + "&units=M&days=2&key="
+		String finalURL = baseURL + "?" + "postal_code=" + zipCode + "&country=" + countryCode + "&units=M&key="
 				+ "e2d6801fcecb4784ad007356cd1cc960";
 		URL url = new URL(finalURL);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
