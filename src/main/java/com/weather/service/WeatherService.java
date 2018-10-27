@@ -7,7 +7,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -115,7 +114,7 @@ public class WeatherService {
 		Response response = mapper.readValue(br.readLine(), Response.class);
 
 		conn.disconnect();
-		
+
 		return response;
 	}
 
