@@ -73,18 +73,24 @@ public class Startup extends JFrame implements ActionListener {
 
 		if (ae.getSource() == actionButton) {
 
-			countryCode = countryField.getText();
-			zipCode = Integer.parseInt(zipField.getText());
+			try {
+				countryCode = countryField.getText();
+				zipCode = Integer.parseInt(zipField.getText());
 
-			CoolestData coolestData = WeatherService.coolestTemp(countryCode, zipCode);
-			coolestTemp = coolestData.getTemp();
-			coolestHour = coolestData.getHour();
+				CoolestData coolestData = WeatherService.coolestTemp(countryCode, zipCode);
+				coolestTemp = coolestData.getTemp();
+				coolestHour = coolestData.getHour();
 
-			if (coolestTemp != null && coolestHour != null) {
-				tempField.setText(String.valueOf(coolestTemp));
-				hourField.setText(String.valueOf(coolestHour));
-				cityField.setText(coolestData.getCity());
-			} else {
+				if (coolestTemp != null && coolestHour != null) {
+					tempField.setText(String.valueOf(coolestTemp));
+					hourField.setText(String.valueOf(coolestHour));
+					cityField.setText(coolestData.getCity());
+				} else {
+					tempField.setText("Not Found!");
+					hourField.setText("Not Found!");
+					cityField.setText("Not Found!");
+				}
+			} catch (Exception e) {
 				tempField.setText("Not Found!");
 				hourField.setText("Not Found!");
 				cityField.setText("Not Found!");
@@ -98,6 +104,7 @@ public class Startup extends JFrame implements ActionListener {
 		Startup a = new Startup();
 		a.setVisible(true);
 		a.setLocation(200, 200);
+		a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
