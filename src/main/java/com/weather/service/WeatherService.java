@@ -115,26 +115,8 @@ public class WeatherService {
 		Response response = mapper.readValue(br.readLine(), Response.class);
 
 		conn.disconnect();
+		
 		return response;
-	}
-
-	private static void coolest(Float coolestTemp, String coolestHour, Data data) throws ParseException {
-
-		Float currentTemp = Float.parseFloat(data.getTemp());
-		String currentTime = data.getTimestamp_local();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		Date currentDate = sdf.parse(currentTime);
-		SimpleDateFormat sdfFormat = new SimpleDateFormat("HH");
-		String formattedDate = sdfFormat.format(currentDate);
-
-		if (coolestTemp == null) {
-			coolestTemp = currentTemp;
-			coolestHour = formattedDate;
-		} else if (currentTemp < coolestTemp) {
-			coolestTemp = currentTemp;
-			coolestHour = formattedDate;
-		}
-
 	}
 
 }
